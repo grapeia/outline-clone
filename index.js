@@ -1,10 +1,8 @@
-// create a main class including all the functions and execute it on page load
+
 class Main {
 	constructor() {
 		this.init();
 	}
-
-	//return new page content with outline.com style like
 	createArticlePage(title, origin, content, image) {
 		document.body.innerHTML = "";
 		document.body.className = "";
@@ -17,8 +15,7 @@ class Main {
 		pageTitle.className = "page-title";
 		pageTitle.innerHTML = title;
 		page.appendChild(pageTitle);
-
-		// if image or imgUrl is not null, create a img element
+		
 		if (image) {
 			let pageImage = document.createElement("img");
 			pageImage.className = "page-image";
@@ -36,9 +33,7 @@ class Main {
 		pageContent.innerHTML = content;
 		page.appendChild(pageContent);
 
-		// add style
 		let style = document.createElement("style");
-		// the image must be in the title area
 		style.innerHTML = `
             body {
                 display: flex;
@@ -108,7 +103,6 @@ class Main {
 		document.body.appendChild(page);
 	}
 
-	// parse root document with https://github.com/mozilla/readability
 	parseArticle() {
 		var documentClone = document.cloneNode(true);
 		var article = new Readability(documentClone).parse();
@@ -121,7 +115,6 @@ class Main {
 		);
 	}
 
-	// async import js script from url
 	async importScript(url) {
 		let script = document.createElement("script");
 		script.src = url;
@@ -132,7 +125,6 @@ class Main {
 		});
 	}
 
-	// initialize the main class
 	async init() {
 		await this.importScript(
 			"https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
@@ -154,5 +146,4 @@ class Main {
 		this.parseArticle();
 	}
 }
-// execute main class
 new Main();
