@@ -14,7 +14,7 @@
 
 ## 🚀 Demo
 
-Acesse [https://grapeia.github.io/outline-clone/demo.html](https://grapeia.github.io/outline-clone/demo.html) para ver o NoDistract em ação!
+Acesse [https://grapeia.github.io/nodistract/demo.html](https://grapeia.github.io/nodistract/demo.html) para ver o NoDistract em ação!
 
 A página de demonstração contém:
 - Artigo completo sobre leitura focada
@@ -28,7 +28,7 @@ A página de demonstração contém:
 
 ## 💾 Instalação
 
-Acesse [https://grapeia.github.io/outline-clone/install.html](https://grapeia.github.io/outline-clone/install.html) para instalar o bookmarklet!
+Acesse [https://grapeia.github.io/nodistract/install.html](https://grapeia.github.io/nodistract/install.html) para instalar o bookmarklet!
 
 A página de instalação oferece:
 - **Método 1:** Arraste o botão para sua barra de favoritos
