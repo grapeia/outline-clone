@@ -415,8 +415,8 @@
                 // Minificar
                 const minified = minifyJS(sourceCode);
                 
-                // Criar bookmarklet CDN
-                const githubUrl = 'https://raw.githubusercontent.com/grapeia/nodistract/main/nodistract.js';
+                // Criar bookmarklet CDN (usando jsDelivr que permite CORS)
+                const githubUrl = 'https://cdn.jsdelivr.net/gh/grapeia/nodistract@main/nodistract.js';
                 bookmarkletCode = createBookmarkletWrapper(githubUrl);
                 
                 // Atualizar interface
