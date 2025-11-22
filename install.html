@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="NoDistract - Modo leitura limpo para qualquer site. Instale o bookmarklet em 3 passos.">
+    <title>📖 NoDistract - Instalação</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 900px;
+            width: 100%;
+            padding: 50px;
+            animation: slideUp 0.5s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header p {
+            font-size: 1.2em;
+            color: #666;
+        }
+
+        .step {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 25px;
+            border-left: 5px solid #667eea;
+        }
+
+        .step h2 {
+            color: #667eea;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .step-number {
+            background: #667eea;
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+
+        .drag-box {
+            background: #fff3cd;
+            border: 2px dashed #856404;
+            border-radius: 8px;
+            padding: 30px;
+            margin: 15px 0;
+            text-align: center;
+        }
+
+        .bookmarklet-link {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.2em;
+            cursor: move;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .bookmarklet-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.5);
+        }
+
+        .btn {
+            background: #27ae60;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 10px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .btn:hover {
+            background: #229954;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(39, 174, 96, 0.3);
+        }
+
+        .btn.copied {
+            background: #3498db;
+        }
+
+        .btn-test {
+            background: white;
+            color: #667eea;
+            border: 2px solid #667eea;
+        }
+
+        .btn-test:hover {
+            background: #667eea;
+            color: white;
+        }
+
+        .code-box {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85em;
+            word-break: break-all;
+            margin: 15px 0;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        .info-box {
+            background: #e8f5e9;
+            border-left: 4px solid #4caf50;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 15px 0;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            border: 2px solid #e9ecef;
+        }
+
+        .stat-value {
+            font-size: 2em;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .stat-label {
+            font-size: 0.9em;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 2px solid #e9ecef;
+            color: #666;
+        }
+
+        .footer a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        #loading {
+            display: none;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #667eea;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 30px 20px;
+            }
+            .header h1 {
+                font-size: 2em;
+            }
+            .stats {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📖 NoDistract</h1>
+            <p>Modo leitura limpo para qualquer site</p>
+        </div>
+
+        <div id="loading">
+            <div class="spinner"></div>
+            <p style="margin-top: 15px;">Gerando bookmarklet...</p>
+        </div>
+
+        <!-- Estatísticas -->
+        <div class="stats" id="stats" style="display: none;">
+            <div class="stat-card">
+                <div class="stat-value" id="sourceSize">-</div>
+                <div class="stat-label">Código Fonte</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="minifiedSize">-</div>
+                <div class="stat-label">Minificado</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="bookmarkletSize">-</div>
+                <div class="stat-label">Bookmarklet</div>
+            </div>
+        </div>
+
+        <!-- Método 1: Arrastar -->
+        <div class="step">
+            <h2>
+                <span class="step-number">1</span>
+                Arraste para a Barra de Favoritos
+            </h2>
+            <div class="drag-box">
+                <p style="margin-bottom: 15px;">Arraste o botão abaixo para sua barra de favoritos:</p>
+                <a href="#" id="dragLink" class="bookmarklet-link" onclick="return false;">
+                    📖 NoDistract
+                </a>
+                <p style="margin-top: 15px; font-size: 0.9em; color: #856404;">
+                    <strong>💡 Dica:</strong> Certifique-se de que a barra de favoritos está visível (Ctrl+Shift+B)
+                </p>
+            </div>
+        </div>
+
+        <!-- Método 2: Copiar -->
+        <div class="step">
+            <h2>
+                <span class="step-number">2</span>
+                Ou Copie e Cole Manualmente
+            </h2>
+            <p>Clique no botão abaixo para copiar o código:</p>
+            <button class="btn" onclick="copyBookmarklet()" id="copyBtn">
+                📋 Copiar Bookmarklet
+            </button>
+            <div class="info-box" style="margin-top: 15px;">
+                <strong>Como criar o favorito:</strong><br>
+                1. Pressione <kbd>Ctrl+Shift+O</kbd> (ou <kbd>Cmd+Shift+O</kbd> no Mac)<br>
+                2. Clique em "Adicionar página"<br>
+                3. Nome: <strong>NoDistract</strong><br>
+                4. URL: Cole o código copiado<br>
+                5. Salve!
+            </div>
+        </div>
+
+        <!-- Testar -->
+        <div class="step" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none;">
+            <h2 style="color: white;">
+                <span class="step-number">3</span>
+                Testar Agora
+            </h2>
+            <p>Clique no botão abaixo para testar o NoDistract nesta página:</p>
+            <button class="btn btn-test" onclick="testNoDistract()">
+                ⚡ Testar NoDistract
+            </button>
+        </div>
+
+        <!-- Código (oculto) -->
+        <div style="display: none;">
+            <div id="sourceCode"></div>
+            <div id="minifiedCode"></div>
+            <div id="bookmarkletCode"></div>
+        </div>
+
+        <div class="footer">
+            <p>
+                <strong>Open Source</strong> • 
+                <a href="https://github.com/grapeia/nodistract" target="_blank">GitHub</a> • 
+                <a href="demo.html">Ver Demo</a>
+            </p>
+            <p style="margin-top: 10px; font-size: 0.9em;">
+                Feito com ❤️ para leitura sem distrações
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // ============================================
+        // GERADOR DE BOOKMARKLET
+        // ============================================
+
+        let bookmarkletCode = '';
+        let sourceCode = '';
+
+        // Minificador JavaScript
+        function minifyJS(code) {
+            return code
+                // Remove comentários de linha única
+                .replace(/\/\/.*$/gm, '')
+                // Remove comentários de múltiplas linhas
+                .replace(/\/\*[\s\S]*?\*\//g, '')
+                // Remove espaços em branco extras
+                .replace(/\s+/g, ' ')
+                // Remove espaços antes e depois de caracteres especiais
+                .replace(/\s*([{}();,:])\s*/g, '$1')
+                .replace(/\s*([=+\-*/<>!&|])\s*/g, '$1')
+                // Remove quebras de linha
+                .replace(/\n/g, '')
+                .trim();
+        }
+
+        // Ofuscador simples de variáveis
+        function obfuscateVars(code) {
+            const varMap = {
+                'NoDistract': '_ND',
+                'ReadablePageGenerator': '_ND',
+                'createArticlePage': '_ca',
+                'injectStyles': '_is',
+                'parseArticle': '_pa',
+                'importScript': '_im',
+                'originalHTML': '_oh',
+                'originalClass': '_oc'
+            };
+            
+            Object.keys(varMap).forEach(varName => {
+                const regex = new RegExp('\\b' + varName + '\\b', 'g');
+                code = code.replace(regex, varMap[varName]);
+            });
+            
+            return code;
+        }
+
+        // Criar bookmarklet wrapper (CDN)
+        function createBookmarkletWrapper(cdnUrl) {
+            const wrapper = `(function(){if(window.NoDistract||window._ND){alert('NoDistract já está ativo!');return;}var s=document.createElement('script');s.src='${cdnUrl}';s.onerror=function(){alert('Erro ao carregar. Verifique sua conexão.');};document.head.appendChild(s);})();`;
+            return 'javascript:' + wrapper;
+        }
+
+        // Carregar código fonte e gerar bookmarklet
+        async function loadAndGenerate() {
+            document.getElementById('loading').style.display = 'block';
+            
+            try {
+                // Carregar nodistract.js
+                const response = await fetch('nodistract.js');
+                sourceCode = await response.text();
+                
+                // Minificar
+                const minified = minifyJS(sourceCode);
+                
+                // Criar bookmarklet CDN
+                const githubUrl = 'https://raw.githubusercontent.com/grapeia/nodistract/main/nodistract.js';
+                bookmarkletCode = createBookmarkletWrapper(githubUrl);
+                
+                // Atualizar interface
+                document.getElementById('sourceCode').textContent = sourceCode;
+                document.getElementById('minifiedCode').textContent = minified;
+                document.getElementById('bookmarkletCode').textContent = bookmarkletCode;
+                
+                // Atualizar link de arrastar
+                document.getElementById('dragLink').href = bookmarkletCode;
+                
+                // Atualizar estatísticas
+                document.getElementById('sourceSize').textContent = formatBytes(sourceCode.length);
+                document.getElementById('minifiedSize').textContent = formatBytes(minified.length);
+                document.getElementById('bookmarkletSize').textContent = formatBytes(bookmarkletCode.length);
+                document.getElementById('stats').style.display = 'grid';
+                
+                document.getElementById('loading').style.display = 'none';
+                
+                console.log('✅ Bookmarklet gerado com sucesso!');
+                console.log('📊 Tamanho original:', sourceCode.length, 'bytes');
+                console.log('📊 Tamanho minificado:', minified.length, 'bytes');
+                console.log('📊 Tamanho bookmarklet:', bookmarkletCode.length, 'bytes');
+                
+            } catch (error) {
+                console.error('Erro ao gerar bookmarklet:', error);
+                alert('Erro ao carregar nodistract.js. Certifique-se de que o arquivo existe.');
+                document.getElementById('loading').style.display = 'none';
+            }
+        }
+
+        // Formatar bytes
+        function formatBytes(bytes) {
+            if (bytes < 1024) return bytes + 'B';
+            return (bytes / 1024).toFixed(1) + 'KB';
+        }
+
+        // Copiar bookmarklet
+        function copyBookmarklet() {
+            const code = document.getElementById('bookmarkletCode').textContent;
+            
+            if (!code) {
+                alert('Aguarde, o bookmarklet está sendo gerado...');
+                return;
+            }
+            
+            // Copiar
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(code).then(() => {
+                    showCopyFeedback();
+                }).catch(() => {
+                    fallbackCopy(code);
+                });
+            } else {
+                fallbackCopy(code);
+            }
+        }
+
+        // Fallback de cópia
+        function fallbackCopy(text) {
+            const textArea = document.createElement('textarea');
+            textArea.value = text;
+            textArea.style.position = 'fixed';
+            textArea.style.left = '-999999px';
+            document.body.appendChild(textArea);
+            textArea.select();
+            
+            try {
+                document.execCommand('copy');
+                showCopyFeedback();
+            } catch (err) {
+                alert('Não foi possível copiar. Por favor, copie manualmente.');
+            }
+            
+            document.body.removeChild(textArea);
+        }
+
+        // Feedback de cópia
+        function showCopyFeedback() {
+            const btn = document.getElementById('copyBtn');
+            const originalHTML = btn.innerHTML;
+            
+            btn.classList.add('copied');
+            btn.innerHTML = '✅ Copiado! Agora cole nos favoritos';
+            
+            setTimeout(() => {
+                btn.classList.remove('copied');
+                btn.innerHTML = originalHTML;
+            }, 3000);
+        }
+
+        // Testar NoDistract
+        function testNoDistract() {
+            const code = bookmarkletCode.replace('javascript:', '');
+            try {
+                eval(code);
+            } catch (error) {
+                console.error('Erro ao testar:', error);
+                alert('Erro ao executar. Veja o console para detalhes.');
+            }
+        }
+
+        // Inicializar ao carregar a página
+        window.addEventListener('DOMContentLoaded', loadAndGenerate);
+
+        // Log console
+        console.log('%c📖 NoDistract', 'font-size: 20px; font-weight: bold; color: #667eea;');
+        console.log('Bookmarklet gerado automaticamente via JavaScript!');
+        console.log('GitHub: https://github.com/grapeia/nodistract');
+    </script>
+</body>
+</html>

@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo - Outline Clone Reader Mode</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+        }
+
+        header {
+            background: #2c3e50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .demo-button {
+            display: inline-block;
+            margin: 20px;
+            padding: 15px 30px;
+            background: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            border: none;
+            font-size: 16px;
+            transition: background 0.3s;
+        }
+
+        .demo-button:hover {
+            background: #2980b9;
+        }
+
+        nav {
+            background: #34495e;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            padding: 5px 10px;
+        }
+
+        aside {
+            background: #ecf0f1;
+            padding: 20px;
+            margin: 20px;
+            border-radius: 5px;
+        }
+
+        .sidebar {
+            float: right;
+            width: 300px;
+            background: #e8e8e8;
+            padding: 20px;
+            margin: 20px;
+        }
+
+        .ad {
+            background: #ff6b6b;
+            color: white;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: center;
+            border-radius: 5px;
+        }
+
+        article {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 40px;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        article h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+
+        article .author {
+            color: #7f8c8d;
+            font-style: italic;
+            margin-bottom: 30px;
+        }
+
+        article img {
+            width: 100%;
+            height: auto;
+            margin: 30px 0;
+            border-radius: 5px;
+        }
+
+        article p {
+            margin-bottom: 20px;
+            font-size: 1.1em;
+            line-height: 1.8;
+        }
+
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 30px;
+            margin-top: 50px;
+        }
+
+        .clutter {
+            background: #95a5a6;
+            padding: 10px;
+            margin: 10px 0;
+            border-left: 4px solid #7f8c8d;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🎯 Página de Demonstração</h1>
+        <p>Esta página contém muito conteúdo desnecessário (anúncios, menus, etc.)</p>
+        <button class="demo-button" onclick="loadReaderMode()">
+            🚀 Ativar Modo Leitura
+        </button>
+    </header>
+
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">Sobre</a>
+        <a href="#">Serviços</a>
+        <a href="#">Contato</a>
+        <a href="#">Blog</a>
+        <a href="#">Mais</a>
+    </nav>
+
+    <div class="ad">
+        🚫 ANÚNCIO CHATO AQUI - Compre agora com 50% de desconto!
+    </div>
+
+    <aside class="clutter">
+        ⚠️ Este é um aviso desnecessário que atrapalha a leitura
+    </aside>
+
+    <div class="sidebar">
+        <h3>Menu Lateral</h3>
+        <ul>
+            <li>Link 1</li>
+            <li>Link 2</li>
+            <li>Link 3</li>
+        </ul>
+        <div class="ad" style="margin-top: 20px; font-size: 0.9em;">
+            Mais um anúncio irritante
+        </div>
+    </div>
+
+    <article>
+        <h1>A Importância da Leitura Focada na Era Digital</h1>
+        
+        <p class="author">Por João Silva • 22 de Novembro de 2025</p>
+
+        <img src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=800" alt="Pessoa lendo um livro">
+
+        <p>
+            Em um mundo cada vez mais conectado e repleto de distrações digitais, 
+            a capacidade de manter o foco durante a leitura se tornou uma habilidade 
+            extremamente valiosa. Estudos recentes mostram que a pessoa média é 
+            interrompida a cada 3 minutos durante suas atividades online.
+        </p>
+
+        <div class="clutter">
+            💬 Comentários: 234 pessoas comentaram sobre este artigo
+        </div>
+
+        <p>
+            A leitura profunda, aquela que permite uma compreensão genuína e reflexão 
+            sobre o conteúdo, está se tornando cada vez mais rara. Interfaces 
+            sobrecarregadas com anúncios, pop-ups, menus laterais e outros elementos 
+            desnecessários contribuem significativamente para essa fragmentação da atenção.
+        </p>
+
+        <div class="ad">
+            📢 PROMOÇÃO ESPECIAL - Não perca esta oportunidade!
+        </div>
+
+        <h2>O Impacto das Distrações Visuais</h2>
+
+        <p>
+            Pesquisadores da Universidade de Stanford descobriram que interfaces 
+            com excesso de elementos visuais podem reduzir a compreensão de leitura 
+            em até 40%. Nosso cérebro precisa processar cada elemento visual presente 
+            na tela, mesmo quando tentamos conscientemente ignorá-los.
+        </p>
+
+        <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=800" alt="Pessoa concentrada estudando">
+
+        <p>
+            É aqui que ferramentas como modos de leitura se tornam essenciais. 
+            Ao remover todos os elementos supérfluos e apresentar apenas o conteúdo 
+            principal, essas ferramentas nos ajudam a recuperar nossa capacidade 
+            natural de imersão textual.
+        </p>
+
+        <aside class="clutter">
+            👥 Relacionado: Veja também estes 10 artigos que você precisa ler!
+        </aside>
+
+        <h2>Benefícios da Leitura Focada</h2>
+
+        <p>
+            Os benefícios de uma leitura sem distrações são numerosos e bem documentados:
+        </p>
+
+        <ul style="margin: 20px 0; padding-left: 40px;">
+            <li>Melhor retenção de informações</li>
+            <li>Maior velocidade de leitura</li>
+            <li>Compreensão mais profunda do conteúdo</li>
+            <li>Redução do estresse visual</li>
+            <li>Experiência de leitura mais prazerosa</li>
+        </ul>
+
+        <p>
+            Ao criar um ambiente de leitura limpo e minimalista, permitimos que 
+            nossa mente se concentre exclusivamente no que realmente importa: 
+            as ideias e informações que o autor está tentando transmitir.
+        </p>
+
+        <blockquote style="border-left: 4px solid #3498db; padding-left: 20px; margin: 30px 0; font-style: italic; color: #555;">
+            "A simplicidade é o último grau de sofisticação." - Leonardo da Vinci
+        </blockquote>
+
+        <h2>Como Implementar na Prática</h2>
+
+        <p>
+            Existem várias maneiras de criar um ambiente de leitura mais focado. 
+            Extensões de navegador, bookmarklets e aplicativos dedicados podem 
+            transformar qualquer página web em uma experiência de leitura otimizada.
+        </p>
+
+        <p>
+            O mais importante é reconhecer o valor da atenção focada e tomar 
+            medidas conscientes para protegê-la. Em um mundo que constantemente 
+            compete por nossa atenção, a capacidade de se concentrar é um 
+            verdadeiro superpoder.
+        </p>
+
+        <div class="clutter">
+            📊 Estatísticas: Este artigo foi lido 5.234 vezes
+        </div>
+
+        <h2>Conclusão</h2>
+
+        <p>
+            A leitura focada não é apenas sobre consumir informação mais eficientemente. 
+            É sobre criar espaço mental para reflexão, compreensão profunda e 
+            crescimento intelectual. Ao eliminar distrações visuais e simplificar 
+            nossa experiência de leitura, estamos investindo em nossa capacidade 
+            de pensar criticamente e aprender profundamente.
+        </p>
+
+        <p>
+            Experimente ferramentas de modo leitura e observe a diferença em sua 
+            experiência. Você pode se surpreender com o quanto sua compreensão e 
+            prazer de leitura podem melhorar quando os obstáculos visuais são removidos.
+        </p>
+    </article>
+
+    <div class="ad" style="margin: 40px 20px;">
+        🎁 Oferta Limitada! Clique aqui agora!
+    </div>
+
+    <aside class="clutter" style="margin: 20px;">
+        📱 Baixe nosso aplicativo - Disponível na App Store e Google Play
+    </aside>
+
+    <footer>
+        <p>&copy; 2025 NoDistract Demo. Todos os direitos reservados.</p>
+        <p style="margin-top: 10px;">
+            <small>Este conteúdo é apenas para demonstração do NoDistract</small>
+        </p>
+    </footer>
+
+    <script>
+        function loadReaderMode() {
+            // Load NoDistract
+            const script = document.createElement('script');
+            script.src = './nodistract.js';
+            script.onerror = () => {
+                alert('Erro ao carregar o script. Certifique-se de que nodistract.js está no mesmo diretório.');
+            };
+            document.head.appendChild(script);
+        }
+
+        // Também pode ser ativado via console para testes
+        console.log('%c📖 NoDistract Demo', 'font-size: 20px; font-weight: bold; color: #3498db;');
+        console.log('Clique no botão "Ativar Modo Leitura" ou execute: loadReaderMode()');
+    </script>
+</body>
+</html>
