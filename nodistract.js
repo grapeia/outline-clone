@@ -19,6 +19,9 @@ class NoDistract {
 		const originalHTML = document.body.innerHTML;
 		const originalClass = document.body.className;
 		
+		// Disable all scripts on the page before switching to reader mode
+		this.disablePageScripts();
+		
 		// Reset page
 		document.body.innerHTML = "";
 		document.body.className = "";
@@ -79,6 +82,62 @@ class NoDistract {
 		
 		// Scroll to top
 		window.scrollTo(0, 0);
+	}
+
+	/**
+	 * Disables all scripts on the page to prevent popups and interruptions
+	 */
+	disablePageScripts() {
+		// Remove all script tags from the page
+		const scripts = document.querySelectorAll('script');
+		scripts.forEach(script => {
+			// Don't remove the Readability library or this script itself
+			if (!script.src.includes('readability') && !script.src.includes('nodistract')) {
+				script.remove();
+			}
+		});
+
+		// Stop all timers and intervals
+		const highestTimeoutId = setTimeout(() => {}, 0);
+		for (let i = 0; i < highestTimeoutId; i++) {
+			clearTimeout(i);
+		}
+
+		const highestIntervalId = setInterval(() => {}, 0);
+		for (let i = 0; i < highestIntervalId; i++) {
+			clearInterval(i);
+		}
+
+		// Disable inline event handlers by cloning and replacing all elements
+		// This prevents onclick, onload, etc. from firing
+		const allElements = document.querySelectorAll('*');
+		allElements.forEach(element => {
+			// Remove all event listener attributes
+			const attributes = Array.from(element.attributes);
+			attributes.forEach(attr => {
+				if (attr.name.startsWith('on')) {
+					element.removeAttribute(attr.name);
+				}
+			});
+		});
+
+		// Override common methods that could trigger popups
+		window.alert = () => {};
+		window.confirm = () => false;
+		window.prompt = () => null;
+		
+		// Prevent new scripts from being added
+		const originalAppendChild = Element.prototype.appendChild;
+		Element.prototype.appendChild = function(child) {
+			if (child.tagName === 'SCRIPT') {
+				// Only allow Readability and NoDistract scripts
+				if (child.src && (child.src.includes('readability') || child.src.includes('nodistract'))) {
+					return originalAppendChild.call(this, child);
+				}
+				return child;
+			}
+			return originalAppendChild.call(this, child);
+		};
 	}
 
 	/**
